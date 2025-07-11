@@ -11,7 +11,7 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
     - name: Show all files
-      run: ls - al
+      run: ls -al
     - name: Copy files via ssh
       uses: appleboy/scp-action@v1
       with:
