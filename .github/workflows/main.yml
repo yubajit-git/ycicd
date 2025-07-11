@@ -19,7 +19,7 @@ jobs:
         username: ${{ secrets.EC2_USERNAME }}
         Key: ${{ secrets.EC2_SSH }}
         port: 22
-        source: "/home/runner/work/ycicd/index.html"
+        source: "index.html"
         target: /var/www/html/
 
           
