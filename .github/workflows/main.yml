@@ -19,8 +19,19 @@ jobs:
         username: ${{ secrets.EC2_USERNAME }}
         Key: ${{ secrets.EC2_SSH }}
         port: 22
-        source: "index.html"
-        target: /var/www/html/
+        source: "./index.html"
+        target: "/home/${{ secrets.EC2_USERNAME }}/tmp"
+
+    - name: Move file to /var/www/html with sudo
+      uses: appleboy/ssh-action@v1
+      with:
+        host: ${{ secrets.EC2_HOST }}
+        username: ${{ secrets.EC2_USERNAME }}
+        key: ${{ secrets.EC2_SSH }}
+        script: |
+            sudo mkdir -p /var/www/html
+            sudo mv /home/${{ secrets.EC2_USERNAME }}/tmp/index.html /var/www/html/index.html
+            sudo chown www-data:www-data /var/www/html/index.html
 
           
             
